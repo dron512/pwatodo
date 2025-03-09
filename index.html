@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA Todo List with Recorder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <h1>🎤 PWA Todo 리스트 (녹음 지원)</h1>
+
+    <input type="text" id="todo-input" placeholder="할 일을 입력하세요">
+    <button id="add-btn">추가</button>
+
+    <ul id="todo-list"></ul>
+
+    <h2>🎙 녹음 기능</h2>
+    <button id="record-btn">녹음 시작</button>
+    <button id="stop-btn" disabled>녹음 중지</button>
+    <audio id="audio-playback" controls></audio>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => console.log('서비스 워커 등록 완료'))
+                .catch(error => console.error('서비스 워커 등록 실패:', error));
+        }
+    </script>
+</body>
+</html>
